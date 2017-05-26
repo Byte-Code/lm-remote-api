@@ -158,7 +158,7 @@ var RemoteApi = function () {
     value: function httpGet(url) {
       var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-      return this.httpGet(url, { params: params });
+      return this.httpClient.get(url, { params: params });
     }
   }, {
     key: 'fetchStore',
