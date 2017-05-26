@@ -61,7 +61,6 @@ class RemoteApi {
   fetchRelatedProductDisplay = productCode => {
     const url = createUrl(this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [
       this.spaceId,
-      this.storeCode,
       productCode
     ]);
     return this.httpGetCore(url);

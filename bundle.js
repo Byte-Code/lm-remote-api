@@ -146,7 +146,7 @@ var RemoteApi = function RemoteApi(_ref) {
   };
 
   this.fetchRelatedProductDisplay = function (productCode) {
-    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [_this.spaceId, _this.storeCode, productCode]);
+    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [_this.spaceId, productCode]);
     return _this.httpGetCore(url);
   };
 
