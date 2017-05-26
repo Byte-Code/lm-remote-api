@@ -24,7 +24,7 @@
   "name": "lm-remote-api",
   "version": "0.0.3",
   "description": "remote api ",
-  "main": "index.js",
+  "main": "bundle.js",
   "author": "Byte-Code SpA",
   "license": "MIT"
 }
