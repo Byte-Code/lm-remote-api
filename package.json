@@ -19,7 +19,7 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "axios": "^0.16.1"
+    "axios": "0.15.3"
   },
   "name": "lm-remote-api",
   "version": "0.0.4",
