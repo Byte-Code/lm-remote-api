@@ -15,7 +15,7 @@ class RemoteApi {
   }
 
   httpGet(url, params = {}) {
-    return this.httpGet(url, { params });
+    return this.httpClient.get(url, { params });
   }
 
   fetchStore() {
