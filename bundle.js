@@ -1963,8 +1963,8 @@ var LISTDISPLAY_PRODUCT = exports.LISTDISPLAY_PRODUCT = 'store/1_0_0/product/lis
 var DISPLAY_PRODUCT = exports.DISPLAY_PRODUCT = 'store/1_0_0/product/display';
 var DISPLAY_RELATEDPRODUCT = exports.DISPLAY_RELATEDPRODUCT = 'catalog/1_0_0/relatedproduct/display';
 var COORDS_SEARCH = exports.COORDS_SEARCH = 'store/1_0_0/search/coords';
-var ALLSTORESTOCK = exports.ALLSTORESTOCK = 'fulfillment-services/v1/allStoreStock/';
-var SUGGEST = exports.SUGGEST = 'lm-cross-selling/v1/suggest/';
+var ALLSTORESTOCK = exports.ALLSTORESTOCK = 'fulfillment-services/v1/allStoreStock';
+var SUGGEST = exports.SUGGEST = 'lm-cross-selling/v1/suggest';
 
 /***/ })
 /******/ ]);
