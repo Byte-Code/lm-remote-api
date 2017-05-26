@@ -108,7 +108,11 @@ var RemoteApi = function RemoteApi(_ref) {
 
   this.httpGet = function (url) {
     var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    return _this.httpClient.get(url, { params: params });
+    return _this.httpClient.get(url, { params: params }).then(function (res) {
+      return res.data;
+    }, function (err) {
+      return err;
+    });
   };
 
   this.fetchStore = function () {
