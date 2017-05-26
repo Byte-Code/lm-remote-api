@@ -112,27 +112,27 @@ var RemoteApi = function RemoteApi(_ref) {
   };
 
   this.fetchStore = function () {
-    var url = createUrl(_this.baseUrlCore, paths.GET_STORE, [_this.spaceId, _this.storeCode]);
+    var url = createUrl(_this.baseUrlCore, paths.GET_STORE, [_this.spaceId, _this.storeCode, _this.storeCode]);
     return _this.httpGet(url);
   };
 
   this.fetchCategoryDisplay = function (categoryCode) {
-    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_CATEGORY, [_this.spaceId, categoryCode]);
+    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_CATEGORY, [_this.spaceId, _this.storeCode, categoryCode]);
     return _this.httpGet(url);
   };
 
   this.fetchProductListDisplay = function (productIdList) {
-    var url = createUrl(_this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [_this.spaceId, productIdList]);
+    var url = createUrl(_this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [_this.spaceId, _this.storeCode, productIdList]);
     return _this.httpGet(url);
   };
 
   this.fetchProductDisplay = function (productCode) {
-    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_PRODUCT, [_this.spaceId, productCode]);
+    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_PRODUCT, [_this.spaceId, _this.storeCode, productCode]);
     return _this.httpGet(url);
   };
 
   this.fetchRelatedProductDisplay = function (productCode) {
-    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [_this.spaceId, productCode]);
+    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [_this.spaceId, _this.storeCode, productCode]);
     return _this.httpGet(url);
   };
 
@@ -140,7 +140,7 @@ var RemoteApi = function RemoteApi(_ref) {
     var lat = pathParams.lat,
         lng = pathParams.lng;
 
-    var url = createUrl(_this.baseUrlCore, paths.COORDS_SEARCH, [_this.spaceId, lat, lng]);
+    var url = createUrl(_this.baseUrlCore, paths.COORDS_SEARCH, [_this.spaceId, _this.storeCode, lat, lng]);
     return _this.httpGet(url, queryParams);
   };
 

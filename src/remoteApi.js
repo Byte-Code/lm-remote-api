@@ -18,31 +18,45 @@ class RemoteApi {
   httpGet = (url, params = {}) => this.httpClient.get(url, { params });
 
   fetchStore = () => {
-    const url = createUrl(this.baseUrlCore, paths.GET_STORE, [this.spaceId, this.storeCode]);
+    const url = createUrl(this.baseUrlCore, paths.GET_STORE, [
+      this.spaceId,
+      this.storeCode,
+      this.storeCode
+    ]);
     return this.httpGet(url);
   };
 
   fetchCategoryDisplay = categoryCode => {
-    const url = createUrl(this.baseUrlCore, paths.DISPLAY_CATEGORY, [this.spaceId, categoryCode]);
+    const url = createUrl(this.baseUrlCore, paths.DISPLAY_CATEGORY, [
+      this.spaceId,
+      this.storeCode,
+      categoryCode
+    ]);
     return this.httpGet(url);
   };
 
   fetchProductListDisplay = productIdList => {
     const url = createUrl(this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [
       this.spaceId,
+      this.storeCode,
       productIdList
     ]);
     return this.httpGet(url);
   };
 
   fetchProductDisplay = productCode => {
-    const url = createUrl(this.baseUrlCore, paths.DISPLAY_PRODUCT, [this.spaceId, productCode]);
+    const url = createUrl(this.baseUrlCore, paths.DISPLAY_PRODUCT, [
+      this.spaceId,
+      this.storeCode,
+      productCode
+    ]);
     return this.httpGet(url);
   };
 
   fetchRelatedProductDisplay = productCode => {
     const url = createUrl(this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [
       this.spaceId,
+      this.storeCode,
       productCode
     ]);
     return this.httpGet(url);
@@ -50,7 +64,12 @@ class RemoteApi {
 
   fetchSearchCoords = (pathParams, queryParams) => {
     const { lat, lng } = pathParams;
-    const url = createUrl(this.baseUrlCore, paths.COORDS_SEARCH, [this.spaceId, lat, lng]);
+    const url = createUrl(this.baseUrlCore, paths.COORDS_SEARCH, [
+      this.spaceId,
+      this.storeCode,
+      lat,
+      lng
+    ]);
     return this.httpGet(url, queryParams);
   };
 
