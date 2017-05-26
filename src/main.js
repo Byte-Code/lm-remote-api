@@ -1,6 +1,3 @@
-// import axios from 'axios';
+import RemoteApi from './remoteApi';
 
-const a = 'asjdlas';
-export default () => {
-  console.log(`the answer is ${a}`);
-};
+export default RemoteApi;
