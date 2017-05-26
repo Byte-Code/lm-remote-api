@@ -8,44 +8,49 @@ function createUrl(baseUrl, path, pathParams) {
 
 class RemoteApi {
   constructor({ baseUrlCore, baseUrlMS, spaceId, storeCode, apiKey }) {
-    this.baseUrlCore = `${baseUrlCore}/${spaceId}`;
+    this.baseUrlCore = baseUrlCore;
+    this.spaceId = spaceId;
     this.baseUrlMS = baseUrlMS;
     this.storeCode = storeCode;
     this.httpClient = createHttpClient(apiKey);
   }
 
-  httpGet(url, params = {}) {
-    return this.httpClient.get(url, { params });
-  }
+  httpGet = (url, params = {}) => this.httpClient.get(url, { params });
 
-  fetchStore() {
-    const url = createUrl(this.baseUrlCore, paths.GET_STORE, [this.storeCode]);
+  fetchStore = () => {
+    const url = createUrl(this.baseUrlCore, paths.GET_STORE, [this.spaceId, this.storeCode]);
     return this.httpGet(url);
-  }
+  };
 
   fetchCategoryDisplay = categoryCode => {
-    const url = createUrl(this.baseUrlCore, paths.DISPLAY_CATEGORY, [categoryCode]);
+    const url = createUrl(this.baseUrlCore, paths.DISPLAY_CATEGORY, [this.spaceId, categoryCode]);
     return this.httpGet(url);
   };
 
   fetchProductListDisplay = productIdList => {
-    const url = createUrl(this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [productIdList]);
+    const url = createUrl(this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [
+      this.spaceId,
+      productIdList
+    ]);
     return this.httpGet(url);
   };
 
   fetchProductDisplay = productCode => {
-    const url = createUrl(this.baseUrlCore, paths.DISPLAY_PRODUCT, [productCode]);
+    const url = createUrl(this.baseUrlCore, paths.DISPLAY_PRODUCT, [this.spaceId, productCode]);
     return this.httpGet(url);
   };
 
   fetchRelatedProductDisplay = productCode => {
-    const url = createUrl(this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [productCode]);
+    const url = createUrl(this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [
+      this.spaceId,
+      productCode
+    ]);
     return this.httpGet(url);
   };
 
   fetchSearchCoords = (pathParams, queryParams) => {
     const { lat, lng } = pathParams;
-    const url = createUrl(this.baseUrlCore, paths.COORDS_SEARCH, [lat, lng]);
+    const url = createUrl(this.baseUrlCore, paths.COORDS_SEARCH, [this.spaceId, lat, lng]);
     return this.httpGet(url, queryParams);
   };
 

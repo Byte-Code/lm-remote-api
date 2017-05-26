@@ -78,8 +78,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _httpClient = __webpack_require__(4);
 
 var _pathConfig = __webpack_require__(6);
@@ -97,79 +95,71 @@ function createUrl(baseUrl, path, pathParams) {
   return url;
 }
 
-var RemoteApi = function () {
-  function RemoteApi(_ref) {
-    var _this = this;
+var RemoteApi = function RemoteApi(_ref) {
+  var _this = this;
 
-    var baseUrlCore = _ref.baseUrlCore,
-        baseUrlMS = _ref.baseUrlMS,
-        spaceId = _ref.spaceId,
-        storeCode = _ref.storeCode,
-        apiKey = _ref.apiKey;
+  var baseUrlCore = _ref.baseUrlCore,
+      baseUrlMS = _ref.baseUrlMS,
+      spaceId = _ref.spaceId,
+      storeCode = _ref.storeCode,
+      apiKey = _ref.apiKey;
 
-    _classCallCheck(this, RemoteApi);
+  _classCallCheck(this, RemoteApi);
 
-    this.fetchCategoryDisplay = function (categoryCode) {
-      var url = createUrl(_this.baseUrlCore, paths.DISPLAY_CATEGORY, [categoryCode]);
-      return _this.httpGet(url);
-    };
+  this.httpGet = function (url) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    return _this.httpClient.get(url, { params: params });
+  };
 
-    this.fetchProductListDisplay = function (productIdList) {
-      var url = createUrl(_this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [productIdList]);
-      return _this.httpGet(url);
-    };
+  this.fetchStore = function () {
+    var url = createUrl(_this.baseUrlCore, paths.GET_STORE, [_this.spaceId, _this.storeCode]);
+    return _this.httpGet(url);
+  };
 
-    this.fetchProductDisplay = function (productCode) {
-      var url = createUrl(_this.baseUrlCore, paths.DISPLAY_PRODUCT, [productCode]);
-      return _this.httpGet(url);
-    };
+  this.fetchCategoryDisplay = function (categoryCode) {
+    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_CATEGORY, [_this.spaceId, categoryCode]);
+    return _this.httpGet(url);
+  };
 
-    this.fetchRelatedProductDisplay = function (productCode) {
-      var url = createUrl(_this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [productCode]);
-      return _this.httpGet(url);
-    };
+  this.fetchProductListDisplay = function (productIdList) {
+    var url = createUrl(_this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [_this.spaceId, productIdList]);
+    return _this.httpGet(url);
+  };
 
-    this.fetchSearchCoords = function (pathParams, queryParams) {
-      var lat = pathParams.lat,
-          lng = pathParams.lng;
+  this.fetchProductDisplay = function (productCode) {
+    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_PRODUCT, [_this.spaceId, productCode]);
+    return _this.httpGet(url);
+  };
 
-      var url = createUrl(_this.baseUrlCore, paths.COORDS_SEARCH, [lat, lng]);
-      return _this.httpGet(url, queryParams);
-    };
+  this.fetchRelatedProductDisplay = function (productCode) {
+    var url = createUrl(_this.baseUrlCore, paths.DISPLAY_RELATEDPRODUCT, [_this.spaceId, productCode]);
+    return _this.httpGet(url);
+  };
 
-    this.fetchAllStoreStock = function (productCode) {
-      var url = createUrl(_this.baseUrlMS, paths.ALLSTORESTOCK, [productCode]);
-      return _this.httpGet(url);
-    };
+  this.fetchSearchCoords = function (pathParams, queryParams) {
+    var lat = pathParams.lat,
+        lng = pathParams.lng;
 
-    this.fetchSuggest = function (productCode) {
-      var url = createUrl(_this.baseUrlMS, paths.SUGGEST, [productCode]);
-      return _this.httpGet(url);
-    };
+    var url = createUrl(_this.baseUrlCore, paths.COORDS_SEARCH, [_this.spaceId, lat, lng]);
+    return _this.httpGet(url, queryParams);
+  };
 
-    this.baseUrlCore = baseUrlCore + '/' + spaceId;
-    this.baseUrlMS = baseUrlMS;
-    this.storeCode = storeCode;
-    this.httpClient = (0, _httpClient.createHttpClient)(apiKey);
-  }
+  this.fetchAllStoreStock = function (productCode) {
+    var url = createUrl(_this.baseUrlMS, paths.ALLSTORESTOCK, [productCode]);
+    return _this.httpGet(url);
+  };
 
-  _createClass(RemoteApi, [{
-    key: 'httpGet',
-    value: function httpGet(url) {
-      var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  this.fetchSuggest = function (productCode) {
+    var url = createUrl(_this.baseUrlMS, paths.SUGGEST, [productCode]);
+    return _this.httpGet(url);
+  };
 
-      return this.httpClient.get(url, { params: params });
-    }
-  }, {
-    key: 'fetchStore',
-    value: function fetchStore() {
-      var url = createUrl(this.baseUrlCore, paths.GET_STORE, [this.storeCode]);
-      return this.httpGet(url);
-    }
-  }]);
-
-  return RemoteApi;
-}();
+  this.baseUrlCore = baseUrlCore;
+  this.spaceId = spaceId;
+  this.baseUrlMS = baseUrlMS;
+  this.storeCode = storeCode;
+  this.httpClient = (0, _httpClient.createHttpClient)(apiKey);
+};
 
 exports.default = RemoteApi;
 
