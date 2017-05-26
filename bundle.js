@@ -126,7 +126,7 @@ var RemoteApi = function RemoteApi(_ref) {
   };
 
   this.fetchProductListDisplay = function (productIdList) {
-    var url = createUrl(_this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [_this.spaceId, _this.storeCode, productIdList]);
+    var url = createUrl(_this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [_this.spaceId, _this.storeCode].concat(_toConsumableArray(productIdList)));
     return _this.httpGet(url);
   };
 

@@ -40,7 +40,7 @@ class RemoteApi {
     const url = createUrl(this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [
       this.spaceId,
       this.storeCode,
-      productIdList
+      ...productIdList
     ]);
     return this.httpGet(url);
   };
