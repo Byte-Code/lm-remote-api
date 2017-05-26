@@ -7,16 +7,20 @@ function createUrl(baseUrl, path, pathParams) {
 }
 
 class RemoteApi {
-  constructor({ baseUrlCore, baseUrlMS, spaceId, storeCode, apiKey }) {
+  constructor({ baseUrlCore, baseUrlMS, spaceId, storeCode, apiKeyCore, apiKeyMS }) {
     this.baseUrlCore = baseUrlCore;
     this.spaceId = spaceId;
     this.baseUrlMS = baseUrlMS;
     this.storeCode = storeCode;
-    this.httpClient = createHttpClient(apiKey);
+    this.httpClientCore = createHttpClient(apiKeyCore);
+    this.httpClientMS = createHttpClient(apiKeyMS);
   }
 
-  httpGet = (url, params = {}) =>
-    this.httpClient.get(url, { params }).then(res => res.data).catch(err => err);
+  httpGetCore = (url, params = {}) =>
+    this.httpClientCore.get(url, { params }).then(res => res.data, err => err);
+
+  httpGetMS = (url, params = {}) =>
+    this.httpClientMS.get(url, { params }).then(res => res.data, err => err);
 
   fetchStore = () => {
     const url = createUrl(this.baseUrlCore, paths.GET_STORE, [
@@ -24,7 +28,7 @@ class RemoteApi {
       this.storeCode,
       this.storeCode
     ]);
-    return this.httpGet(url);
+    return this.httpGetCore(url);
   };
 
   fetchCategoryDisplay = categoryCode => {
@@ -33,7 +37,7 @@ class RemoteApi {
       this.storeCode,
       categoryCode
     ]);
-    return this.httpGet(url);
+    return this.httpGetCore(url);
   };
 
   fetchProductListDisplay = productIdList => {
@@ -42,7 +46,7 @@ class RemoteApi {
       this.storeCode,
       ...productIdList
     ]);
-    return this.httpGet(url);
+    return this.httpGetCore(url);
   };
 
   fetchProductDisplay = productCode => {
@@ -51,7 +55,7 @@ class RemoteApi {
       this.storeCode,
       productCode
     ]);
-    return this.httpGet(url);
+    return this.httpGetCore(url);
   };
 
   fetchRelatedProductDisplay = productCode => {
@@ -60,7 +64,7 @@ class RemoteApi {
       this.storeCode,
       productCode
     ]);
-    return this.httpGet(url);
+    return this.httpGetCore(url);
   };
 
   fetchSearchCoords = (pathParams, queryParams) => {
@@ -71,17 +75,17 @@ class RemoteApi {
       lat,
       lng
     ]);
-    return this.httpGet(url, queryParams);
+    return this.httpGetCore(url, queryParams);
   };
 
   fetchAllStoreStock = productCode => {
     const url = createUrl(this.baseUrlMS, paths.ALLSTORESTOCK, [productCode]);
-    return this.httpGet(url);
+    return this.httpGetMS(url);
   };
 
   fetchSuggest = productCode => {
     const url = createUrl(this.baseUrlMS, paths.SUGGEST, [productCode]);
-    return this.httpGet(url);
+    return this.httpGetMS(url);
   };
 }
 
