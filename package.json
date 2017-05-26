@@ -22,7 +22,7 @@
     "axios": "^0.16.1"
   },
   "name": "lm-remote-api",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "remote api ",
   "main": "bundle.js",
   "author": "Byte-Code SpA",
