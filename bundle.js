@@ -110,7 +110,7 @@ var RemoteApi = function RemoteApi(_ref) {
     var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
     return _this.httpClient.get(url, { params: params }).then(function (res) {
       return res.data;
-    }, function (err) {
+    }).catch(function (err) {
       return err;
     });
   };

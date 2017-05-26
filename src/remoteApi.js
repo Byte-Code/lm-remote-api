@@ -16,7 +16,7 @@ class RemoteApi {
   }
 
   httpGet = (url, params = {}) =>
-    this.httpClient.get(url, { params }).then(res => res.data, err => err);
+    this.httpClient.get(url, { params }).then(res => res.data).catch(err => err);
 
   fetchStore = () => {
     const url = createUrl(this.baseUrlCore, paths.GET_STORE, [
