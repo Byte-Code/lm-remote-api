@@ -154,7 +154,7 @@ var RemoteApi = function RemoteApi(_ref) {
     var lat = pathParams.lat,
         lng = pathParams.lng;
 
-    var url = createUrl(_this.baseUrlCore, paths.COORDS_SEARCH, [_this.spaceId, _this.storeCode, lat, lng]);
+    var url = createUrl(_this.baseUrlCore, paths.COORDS_SEARCH, [_this.spaceId, lat, lng]);
     return _this.httpGetCore(url, queryParams);
   };
 

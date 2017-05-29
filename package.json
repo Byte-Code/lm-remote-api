@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "release": "npm version patch && npm publish"
+    "build": "webpack",
+    "bump": "npm version patch"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",

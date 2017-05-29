@@ -68,12 +68,7 @@ class RemoteApi {
 
   fetchSearchCoords = (pathParams, queryParams) => {
     const { lat, lng } = pathParams;
-    const url = createUrl(this.baseUrlCore, paths.COORDS_SEARCH, [
-      this.spaceId,
-      this.storeCode,
-      lat,
-      lng
-    ]);
+    const url = createUrl(this.baseUrlCore, paths.COORDS_SEARCH, [this.spaceId, lat, lng]);
     return this.httpGetCore(url, queryParams);
   };
 
