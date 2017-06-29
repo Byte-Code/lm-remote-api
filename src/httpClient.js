@@ -1,6 +1,6 @@
-import axios from 'axios/dist/axios';
+import axios from 'axios';
 
-export function createHttpClient(apiKey) {
+export default function createHttpClient(apiKey) {
   const headers = { 'x-square-api-key': apiKey, 'Content-type': 'application/json' };
 
   return axios.create({ headers });

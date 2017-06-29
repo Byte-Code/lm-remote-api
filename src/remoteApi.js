@@ -1,4 +1,4 @@
-import { createHttpClient } from './httpClient';
+import createHttpClient from './httpClient';
 import * as paths from './pathConfig';
 
 function createUrl(baseUrl, path, pathParams) {

@@ -16,7 +16,7 @@
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.0.1",
-    "webpack": "^2.6.1"
+    "webpack": "^3.0.0"
   },
   "dependencies": {
     "axios": "0.15.3"
