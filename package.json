@@ -21,7 +21,7 @@
   "dependencies": {
     "axios": "0.15.3"
   },
-  "name": "lm-remote-api",
+  "name": "@byte-code/lm-remote-api",
   "version": "0.0.26",
   "description": "remote api ",
   "main": "bundle.js",
