@@ -86,6 +86,11 @@ class RemoteApi {
     const url = createUrl(this.baseUrlMS, paths.SUGGEST, [productCode]);
     return this.httpGetMS(url);
   };
+
+  findActiveStores = () => {
+    const url = createUrl(this.baseUrlCore, paths.FIND_ACTIVE_STORES, [this.spaceId]);
+    return this.httpGetCore(url);
+  };
 }
 
 export default RemoteApi;

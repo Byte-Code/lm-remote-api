@@ -7,3 +7,5 @@ export const COORDS_SEARCH = 'store/1_0_0/search/coords';
 export const ALLSTORESTOCK = 'fulfillment-services/v1/allStoreStock';
 export const ALLSTORESTOCK_V2 = 'product-api-v2/v1/allStoreKioskStock';
 export const SUGGEST = 'lm-cross-selling/v1/suggest';
+export const FIND_ACTIVE_STORES = 'store/1_0_0/activestore/list';
+
