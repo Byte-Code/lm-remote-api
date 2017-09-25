@@ -5,4 +5,5 @@ export const DISPLAY_PRODUCT = 'store/1_0_0/product/display';
 export const DISPLAY_RELATEDPRODUCT = 'catalog/1_0_0/relatedproduct/display';
 export const COORDS_SEARCH = 'store/1_0_0/search/coords';
 export const ALLSTORESTOCK = 'fulfillment-services/v1/allStoreStock';
+export const ALLSTORESTOCK_V2 = 'product-api-v2/v1/allStoreKioskStock';
 export const SUGGEST = 'lm-cross-selling/v1/suggest';

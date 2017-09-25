@@ -77,6 +77,11 @@ class RemoteApi {
     return this.httpGetMS(url);
   };
 
+  fetchAllStoreStock_v2 = productCode => {
+    const url = createUrl(this.baseUrlMS, paths.ALLSTORESTOCK_V2, [productCode]);
+    return this.httpGetMS(url);
+  };
+
   fetchSuggest = productCode => {
     const url = createUrl(this.baseUrlMS, paths.SUGGEST, [productCode]);
     return this.httpGetMS(url);
