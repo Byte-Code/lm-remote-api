@@ -1194,9 +1194,19 @@ var RemoteApi = function RemoteApi(_ref) {
     return _this.httpGetMS(url);
   };
 
+  this.fetchAllStoreStock_v2 = function (productCode) {
+    var url = createUrl(_this.baseUrlMS, paths.ALLSTORESTOCK_V2, [productCode]);
+    return _this.httpGetMS(url);
+  };
+
   this.fetchSuggest = function (productCode) {
     var url = createUrl(_this.baseUrlMS, paths.SUGGEST, [productCode]);
     return _this.httpGetMS(url);
+  };
+
+  this.findActiveStores = function () {
+    var url = createUrl(_this.baseUrlCore, paths.FIND_ACTIVE_STORES, [_this.spaceId]);
+    return _this.httpGetCore(url);
   };
 
   this.baseUrlCore = baseUrlCore;
@@ -3059,7 +3069,9 @@ var DISPLAY_PRODUCT = exports.DISPLAY_PRODUCT = 'store/1_0_0/product/display';
 var DISPLAY_RELATEDPRODUCT = exports.DISPLAY_RELATEDPRODUCT = 'catalog/1_0_0/relatedproduct/display';
 var COORDS_SEARCH = exports.COORDS_SEARCH = 'store/1_0_0/search/coords';
 var ALLSTORESTOCK = exports.ALLSTORESTOCK = 'fulfillment-services/v1/allStoreStock';
+var ALLSTORESTOCK_V2 = exports.ALLSTORESTOCK_V2 = 'product-api-v2/v1/allStoreKioskStock';
 var SUGGEST = exports.SUGGEST = 'lm-cross-selling/v1/suggest';
+var FIND_ACTIVE_STORES = exports.FIND_ACTIVE_STORES = 'store/1_0_0/activestore/list';
 
 /***/ })
 /******/ ]);
