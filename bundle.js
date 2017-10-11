@@ -1214,6 +1214,11 @@ var RemoteApi = function RemoteApi(_ref) {
     return _this.httpGetMS(url, queryParams);
   };
 
+  this.fetchListProduct = function (store, queryParams) {
+    var url = createUrl(_this.baseUrlMS, paths.LIST_PRODUCT, [_this.spaceId, store]);
+    return _this.httpGetMS(url, queryParams);
+  };
+
   this.baseUrlCore = baseUrlCore;
   this.spaceId = spaceId;
   this.baseUrlMS = baseUrlMS;
@@ -3078,6 +3083,7 @@ var ALLSTORESTOCK_V2 = exports.ALLSTORESTOCK_V2 = 'product-api-v2/v1/allStoreKio
 var SUGGEST = exports.SUGGEST = 'lm-cross-selling/v1/suggest';
 var FIND_ACTIVE_STORES = exports.FIND_ACTIVE_STORES = 'store/1_0_0/activestore/list';
 var REAL_TIME_STOCK = exports.REAL_TIME_STOCK = 'realtime-stock/v1/v1/realtime-stock';
+var LIST_PRODUCT = exports.LIST_PRODUCT = 'product-api-v2/v1/listproduct';
 
 /***/ })
 /******/ ]);
