@@ -97,12 +97,20 @@ class RemoteApi {
     return this.httpGetMS(url, queryParams);
   };
 
-  fetchListProduct = (store, queryParams) => {
+  fetchListProduct = (queryParams) => {
     const url = createUrl(this.baseUrlMS, paths.LIST_PRODUCT, [
       this.spaceId,
-      store
+      this.storeCode
     ]);
     return this.httpGetMS(url, queryParams);
+  };
+
+  fetchShippingPrice = (productCode, quantity) => {
+    const url = createUrl(this.baseUrlMS, paths.SHIPPING_PRICE, [
+        productCode,
+        quantity
+    ]);
+    return this.httpGetMS(url);
   }
 }
 

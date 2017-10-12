@@ -1214,9 +1214,14 @@ var RemoteApi = function RemoteApi(_ref) {
     return _this.httpGetMS(url, queryParams);
   };
 
-  this.fetchListProduct = function (store, queryParams) {
-    var url = createUrl(_this.baseUrlMS, paths.LIST_PRODUCT, [_this.spaceId, store]);
+  this.fetchListProduct = function (queryParams) {
+    var url = createUrl(_this.baseUrlMS, paths.LIST_PRODUCT, [_this.spaceId, _this.storeCode]);
     return _this.httpGetMS(url, queryParams);
+  };
+
+  this.fetchShippingPrice = function (productCode, quantity) {
+    var url = createUrl(_this.baseUrlMS, paths.SHIPPING_PRICE, [productCode, quantity]);
+    return _this.httpGetMS(url);
   };
 
   this.baseUrlCore = baseUrlCore;
@@ -3084,6 +3089,7 @@ var SUGGEST = exports.SUGGEST = 'lm-cross-selling/v1/suggest';
 var FIND_ACTIVE_STORES = exports.FIND_ACTIVE_STORES = 'store/1_0_0/activestore/list';
 var REAL_TIME_STOCK = exports.REAL_TIME_STOCK = 'realtime-stock/v1/v1/realtime-stock';
 var LIST_PRODUCT = exports.LIST_PRODUCT = 'product-api-v2/v1/listproduct';
+var SHIPPING_PRICE = exports.SHIPPING_PRICE = 'product-api-v2/v1/shippingprice-service';
 
 /***/ })
 /******/ ]);
