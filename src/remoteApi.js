@@ -1,5 +1,6 @@
 import createHttpClient from './httpClient';
 import * as paths from './pathConfig';
+import querystring from 'querystring';
 
 function createUrl(baseUrl, path, pathParams) {
   const url = [baseUrl, path, ...pathParams].join('/');
@@ -102,7 +103,7 @@ class RemoteApi {
       this.spaceId,
       this.storeCode
     ]);
-    return this.httpGetMS(url, queryParams);
+    return this.httpGetMS(url, querystring.stringify(queryParams));
   };
 
   fetchShippingPrice = (productCode, quantity) => {
