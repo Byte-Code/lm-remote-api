@@ -1113,10 +1113,6 @@ var _pathConfig = __webpack_require__(47);
 
 var paths = _interopRequireWildcard(_pathConfig);
 
-var _querystring = __webpack_require__(48);
-
-var _querystring2 = _interopRequireDefault(_querystring);
-
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -1220,12 +1216,17 @@ var RemoteApi = function RemoteApi(_ref) {
 
   this.fetchListProduct = function (queryParams) {
     var url = createUrl(_this.baseUrlMS, paths.LIST_PRODUCT, [_this.spaceId, _this.storeCode]);
-    return _this.httpGetMS(url, _querystring2.default.stringify(queryParams));
+    return _this.httpGetMS(url, queryParams);
   };
 
   this.fetchShippingPrice = function (productCode, quantity) {
     var url = createUrl(_this.baseUrlMS, paths.SHIPPING_PRICE, [productCode, quantity]);
     return _this.httpGetMS(url);
+  };
+
+  this.fetchProduct = function (productCode, queryParams) {
+    var url = createUrl(_this.baseUrlMS, paths.PRODUCT, [_this.spaceId, _this.storeCode, productCode]);
+    return _this.httpGetMS(url, queryParams);
   };
 
   this.baseUrlCore = baseUrlCore;
@@ -1234,7 +1235,13 @@ var RemoteApi = function RemoteApi(_ref) {
   this.storeCode = storeCode;
   this.httpClientCore = (0, _httpClient2.default)(apiKeyCore);
   this.httpClientMS = (0, _httpClient2.default)(apiKeyMS);
-};
+}
+
+// deprecate use fetchListProduct
+
+
+// deprecate
+;
 
 exports.default = RemoteApi;
 
@@ -3094,12 +3101,7 @@ var FIND_ACTIVE_STORES = exports.FIND_ACTIVE_STORES = 'store/1_0_0/activestore/l
 var REAL_TIME_STOCK = exports.REAL_TIME_STOCK = 'realtime-stock/v1/v1/realtime-stock';
 var LIST_PRODUCT = exports.LIST_PRODUCT = 'product-api-v2/v1/listproduct';
 var SHIPPING_PRICE = exports.SHIPPING_PRICE = 'product-api-v2/v1/shippingprice-service';
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports) {
-
-module.exports = require("querystring");
+var PRODUCT = exports.PRODUCT = 'product-api-v2/v1/product';
 
 /***/ })
 /******/ ]);

@@ -11,5 +11,6 @@ export const FIND_ACTIVE_STORES = 'store/1_0_0/activestore/list';
 export const REAL_TIME_STOCK = 'realtime-stock/v1/v1/realtime-stock';
 export const LIST_PRODUCT = 'product-api-v2/v1/listproduct';
 export const SHIPPING_PRICE = 'product-api-v2/v1/shippingprice-service';
+export const PRODUCT = 'product-api-v2/v1/product';
 
 

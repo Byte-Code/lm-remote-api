@@ -1,6 +1,5 @@
 import createHttpClient from './httpClient';
 import * as paths from './pathConfig';
-import querystring from 'querystring';
 
 function createUrl(baseUrl, path, pathParams) {
   const url = [baseUrl, path, ...pathParams].join('/');
@@ -41,6 +40,7 @@ class RemoteApi {
     return this.httpGetCore(url);
   };
 
+  // deprecate use fetchListProduct
   fetchProductListDisplay = productIdList => {
     const url = createUrl(this.baseUrlCore, paths.LISTDISPLAY_PRODUCT, [
       this.spaceId,
@@ -50,6 +50,7 @@ class RemoteApi {
     return this.httpGetCore(url);
   };
 
+  // deprecate
   fetchProductDisplay = productCode => {
     const url = createUrl(this.baseUrlCore, paths.DISPLAY_PRODUCT, [
       this.spaceId,
@@ -103,7 +104,7 @@ class RemoteApi {
       this.spaceId,
       this.storeCode
     ]);
-    return this.httpGetMS(url, querystring.stringify(queryParams));
+    return this.httpGetMS(url, queryParams);
   };
 
   fetchShippingPrice = (productCode, quantity) => {
@@ -112,7 +113,16 @@ class RemoteApi {
         quantity
     ]);
     return this.httpGetMS(url);
-  }
+  };
+
+  fetchProduct = (productCode, queryParams) => {
+    const url = createUrl(this.baseUrlMS, paths.PRODUCT, [
+        this.spaceId,
+        this.storeCode,
+        productCode
+    ]);
+    return this.httpGetMS(url, queryParams);
+  };
 }
 
 export default RemoteApi;
