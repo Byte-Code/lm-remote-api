@@ -95,7 +95,7 @@ class RemoteApi {
   };
 
   fetchRealTimeStock = (queryParams) => {
-    const url = createUrl(this.baseUrlMS, paths.REAL_TIME_STOCK);
+    const url = createUrl(this.baseUrlMS, paths.REAL_TIME_STOCK, []);
     return this.httpGetMS(url, queryParams);
   };
 

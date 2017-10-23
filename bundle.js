@@ -1210,7 +1210,7 @@ var RemoteApi = function RemoteApi(_ref) {
   };
 
   this.fetchRealTimeStock = function (queryParams) {
-    var url = createUrl(_this.baseUrlMS, paths.REAL_TIME_STOCK);
+    var url = createUrl(_this.baseUrlMS, paths.REAL_TIME_STOCK, []);
     return _this.httpGetMS(url, queryParams);
   };
 
