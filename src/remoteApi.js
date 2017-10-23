@@ -94,8 +94,8 @@ class RemoteApi {
     return this.httpGetCore(url);
   };
 
-  fetchRealTimeStock = (store, queryParams) => {
-    const url = createUrl(this.baseUrlMS, paths.REAL_TIME_STOCK, [store]);
+  fetchRealTimeStock = (queryParams) => {
+    const url = createUrl(this.baseUrlMS, paths.REAL_TIME_STOCK);
     return this.httpGetMS(url, queryParams);
   };
 

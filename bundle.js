@@ -1209,8 +1209,8 @@ var RemoteApi = function RemoteApi(_ref) {
     return _this.httpGetCore(url);
   };
 
-  this.fetchRealTimeStock = function (store, queryParams) {
-    var url = createUrl(_this.baseUrlMS, paths.REAL_TIME_STOCK, [store]);
+  this.fetchRealTimeStock = function (queryParams) {
+    var url = createUrl(_this.baseUrlMS, paths.REAL_TIME_STOCK);
     return _this.httpGetMS(url, queryParams);
   };
 
